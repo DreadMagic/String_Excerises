@@ -55,10 +55,10 @@ public class Main {
     }
 
     public static String removeTag(String s, String tag){
-        if (s.contains("<"+tag+">") && s.contains("</"+tag+">")) {
-            int x = s.indexOf("<"+tag+">");
-            int y = s.indexOf("</"+tag+">");
-            s = s.substring(0,x) + s.substring(x,x+tag.length()+2) + s.substring(y+tag.length()+3);
+        int x = s.indexOf("<"+tag+">");
+        int y = s.indexOf("</"+tag+">");
+        if (s.contains("<"+tag+">") && s.substring(x).contains("</"+tag+">")) {
+            s = s.substring(x+tag.length()+2, y);
         }
         return s;
     }
@@ -113,3 +113,46 @@ public class Main {
         System.out.println(removeTag("Happy <b>Hello World</b> Birthday", "b"));
     }
 }
+
+//ello WorldH
+//appyh
+//h
+//
+//Lori Renee Reubenstein
+//Joe Biden
+//Bozo the Clown
+//
+//1101000110
+//00000000
+//
+//04/20/2014 becomes 20-04-2014
+//04/20/2014 becomes 20-04-2014
+//4/20/2014 becomes 20-04-2014
+//04/2/2014 becomes 02-04-2014
+//4/2/2014 becomes 02-04-2014
+//
+//startsWith
+//true
+//true
+//false
+//false
+//true
+//
+//endsWith
+//true
+//true
+//false
+//false
+//true
+//
+//removeTag
+//Hello World
+//<b>Hello World</b>
+//Hello World</b>
+//<b>Hello World
+//</img>Hello World<img>
+//Hello World
+//Hello World
+//Hello World
+//
+//Process finished with exit code 0
